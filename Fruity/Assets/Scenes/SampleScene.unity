@@ -254,7 +254,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55, y: 32, z: -10}
+  m_LocalPosition: {x: 55, y: 30, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -741,9 +741,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7f18aef929f54b91f9afaaa6b812e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWidth: 5
-  gridHeight: 3
+  gridWidth: 9
+  gridHeight: 5
   cellSize: 10
+  placeableObjectSO: {fileID: 11400000, guid: 03ccf4f32455c2942b765180dedbf14a, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

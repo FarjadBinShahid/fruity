@@ -11,12 +11,11 @@ public class GameConstants : MonoBehaviour
             " be", " bf", " bg", " bh", " bi", " bj", " bk", " bl", " bm", " bn", " bo", " bp",
             " bq", " br", " bs", " bt", " bu", " bv", " bw", " bx", " by", " bz", };
     #endregion
-
-
     #region paths
 
     public static string UIPrefabsFolder = "UI/Prefabs/";
     public static string RootCanvasPath = "UI/Prefabs/RootCanvas";
+    public static string BuildingScriptableObjectPath = "Scripts/GamePlay/Building System/Scriptable Objects/";
 
     #endregion
 }

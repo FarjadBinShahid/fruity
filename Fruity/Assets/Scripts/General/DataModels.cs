@@ -58,6 +58,11 @@ namespace core.general.datamodels
 
     }
 
+    public enum Direction
+    {
+        Down,Left,Up,Right
+    }
+
     #endregion
 
     #region MetaData
@@ -244,7 +249,7 @@ namespace core.general.datamodels
                 {
                     for (int y = 0; y < gridArray.GetLength(1); y++)
                     {
-                        UtilsClass.CreateWorldText(gridArray[x, y]?.ToString(), null
+                        debugTextArray[x,y] = UtilsClass.CreateWorldText(gridArray[x, y]?.ToString(), null
                             , GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
 
                         Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.red, 100f);
@@ -263,12 +268,12 @@ namespace core.general.datamodels
             }
         }
 
-        private Vector3 GetWorldPosition(int x, int y)
+        public Vector3 GetWorldPosition(int x, int y)
         {
             return new Vector3(x, y) * cellSize + originPosition;
         }
 
-        private void GetXY(Vector3 worldPosition, out int x, out int y)
+        public void GetXY(Vector3 worldPosition, out int x, out int y)
         {
             x = Mathf.FloorToInt((worldPosition - originPosition).x / cellSize);
             y = Mathf.FloorToInt((worldPosition - originPosition).y / cellSize);
@@ -293,6 +298,20 @@ namespace core.general.datamodels
             GetXY(worldPosition, out _x, out _y);
             SetGridObject(_x, _y, value);
         }
+
+        public TGridObject GetGridObject(int x, int y)
+        {
+            if (x >= 0 && y >= 0 && x < Width && y < Height)
+            {
+                return gridArray[x, y];
+            }
+            else
+            {
+                Debug.LogError($"invalid x : {x} or y : {y} for SetValue");
+                return default(TGridObject);
+            }
+        }
+
 
         public void TriggerGridObjectChanged(int x, int y)
         {
@@ -320,14 +339,20 @@ namespace core.general.datamodels
             return GetValue(_x, _y);
         }
 
+        public float GetCellSize()
+        {
+            return cellSize;
+        }
+
     }
 
 
     public class GridObject
     {
-        private Grid<GridObject> grid;
         private int x;
         private int y;
+        private Grid<GridObject> grid;
+        private Transform transform;
 
         public GridObject(Grid<GridObject> grid, int x, int y)
         {
@@ -336,10 +361,28 @@ namespace core.general.datamodels
             this.y = y;
         }
 
+        public void SetTransform(Transform transform)
+        {
+            this.transform = transform;
+            grid.TriggerGridObjectChanged(x,y);
+        }
+
+        public void ClearTransform()
+        {
+            transform = null;
+        }
+
+        public bool CanBuild()
+        {
+            return transform == null;
+        }
+
         public override string ToString()
         {
-            return x + " , " + y;
+            return $" {x} , {y}";
         }
+
+        
     }
 
 
