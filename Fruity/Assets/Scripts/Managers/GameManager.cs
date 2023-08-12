@@ -1,8 +1,5 @@
 using core.architecture;
-using System.Collections;
-using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace core.managers.game
 {
@@ -21,6 +18,8 @@ namespace core.managers.game
             var _rootCanvas = Resources.Load<GameObject>(GameConstants.RootCanvasPath);
             rootCanvas = Instantiate(_rootCanvas);
             InGameDebugConsole.SetActive(EnableLogs);
+
+            
         }
         private void OnEnable()
         {
@@ -36,6 +35,9 @@ namespace core.managers.game
         {
             base.DeInitialize();
         }
+
+        
+
     }
 }
 
