@@ -1,5 +1,6 @@
 using CodeMonkey.Utils;
 using core.general.datamodels;
+using fruity.gameplay.grid;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -19,18 +20,20 @@ namespace fruity.gameplay.buildingsystem
         [SerializeField] private int cellSize;
 
 
-        [Header("Testing")]
-        [SerializeField] private PlaceableObjectSO placeableObjectSO;
+        [Header("Placeable Objects")]
+        [SerializeField] private List<PlaceableObjectSO> placeableObjectSOList;
 
+        private PlaceableObjectSO placeableObjectSO;
 
         private Transform buildingParent;
-        private Grid<GridObject> grid;
+        private Grid2D<GridObject> grid;
         private Direction dir = Direction.Down;
 
         private void Awake()
         {
             buildingParent = new GameObject("Buildings").transform;
-            grid = new Grid<GridObject>(gridWidth, gridHeight, cellSize, Vector3.zero, (Grid<GridObject> _grid, int _x, int _y) => new GridObject(_grid, _x, _y));
+            grid = new Grid2D<GridObject>(gridWidth, gridHeight, cellSize, Vector3.zero, (Grid2D<GridObject> _grid, int _x, int _y) => new GridObject(_grid, _x, _y));
+            placeableObjectSO = placeableObjectSOList[0];
         }
 
         private void Update()
@@ -39,7 +42,7 @@ namespace fruity.gameplay.buildingsystem
             {
                 Build();
             }
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 ChangePlaceableObjectDirection();
             }
@@ -53,9 +56,20 @@ namespace fruity.gameplay.buildingsystem
             List<Vector2Int> gridPositionList = placeableObjectSO.GetGridPositionInList(new Vector2Int(_x, _y), dir);
             bool _canBuild = true;
 
+            GridObject _gridObject;
             foreach (Vector2Int position in gridPositionList)
             {
-                if (!grid.GetGridObject(position.x, position.y).CanBuild())
+                _gridObject = grid.GetGridObject(position.x, position.y);
+
+
+                if (_gridObject == null)
+                {
+                    // cannot build here
+                    _canBuild = false;
+                    UtilsClass.CreateWorldTextPopup("Cannot build here!", UtilsClass.GetMouseWorldPosition());
+                    break;
+                }
+                else if (!_gridObject.CanBuild())
                 {
                     // cannot build here
                     _canBuild = false;
@@ -64,7 +78,6 @@ namespace fruity.gameplay.buildingsystem
                 }
             }
 
-           // GridObject _gridObject = grid.GetGridObject(_x, _y);
             if (_canBuild)
             {
                 Vector2Int rotationOffset = placeableObjectSO.GetRotationOffset(dir);
