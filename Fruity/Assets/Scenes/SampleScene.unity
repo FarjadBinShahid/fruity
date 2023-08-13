@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -260,6 +261,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e4946272a4d4048a35f5fd6fd45c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraSpeed: 0.5
 --- !u!1001 &547277287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -741,10 +755,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7f18aef929f54b91f9afaaa6b812e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWidth: 9
-  gridHeight: 5
+  gridWidth: 1000
+  gridHeight: 1000
   cellSize: 10
-  placeableObjectSO: {fileID: 11400000, guid: 03ccf4f32455c2942b765180dedbf14a, type: 2}
+  placeableObjectSOList:
+  - {fileID: 11400000, guid: 41b973d555e0c9c46bd12f232ed8fa83, type: 2}
+  - {fileID: 11400000, guid: 03ccf4f32455c2942b765180dedbf14a, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
