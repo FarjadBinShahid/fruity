@@ -1,5 +1,6 @@
 
 using CodeMonkey.Utils;
+using fruity.gameplay.buildingsystem;
 using fruity.gameplay.grid;
 using System;
 using System.Collections.Generic;
@@ -213,7 +214,7 @@ namespace core.general.datamodels
         private int x;
         private int y;
         private Grid2D<GridObject> grid;
-        private Transform transform;
+        private PlacedObject placedObject;
 
         public GridObject(Grid2D<GridObject> grid, int x, int y)
         {
@@ -222,20 +223,24 @@ namespace core.general.datamodels
             this.y = y;
         }
 
-        public void SetTransform(Transform transform)
+        public void SetPlacedObject(PlacedObject placedObject)
         {
-            this.transform = transform;
+            this.placedObject = placedObject;
             grid.TriggerGridObjectChanged(x,y);
         }
 
-        public void ClearTransform()
+        public PlacedObject GetPlacedObject()
         {
-            transform = null;
+            return placedObject;
+        }
+        public void ClearPlacedObject()
+        {
+            placedObject = null;
         }
 
         public bool CanBuild()
         {
-            return transform == null;
+            return placedObject == null;
         }
 
         public override string ToString()

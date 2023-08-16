@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Banana
   m_EditorClassIdentifier: 
   NameString: placeable 1x2
-  Prefab: {fileID: 6312623966577368010, guid: 4067ad87349877b4bbd2cc00cb461d8e, type: 3}
-  Visual: {fileID: 0}
+  Prefab: {fileID: 6312623966577368010, guid: 6f164bbf16549464eb909ac3c6982571, type: 3}
+  Visual: {fileID: 6312623966577368010, guid: 4067ad87349877b4bbd2cc00cb461d8e, type: 3}
   Width: 2
   Height: 1

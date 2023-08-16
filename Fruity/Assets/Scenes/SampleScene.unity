@@ -650,6 +650,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &653375636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653375638}
+  - component: {fileID: 653375637}
+  m_Layer: 6
+  m_Name: BuildingGhost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &653375637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653375636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358cf0e56d8e19c4ca979419377e282e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &653375638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653375636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &979166433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -755,12 +799,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e7f18aef929f54b91f9afaaa6b812e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWidth: 50
-  gridHeight: 50
+  gridWidth: 100
+  gridHeight: 100
   cellSize: 10
   placeableObjectSOList:
   - {fileID: 11400000, guid: 41b973d555e0c9c46bd12f232ed8fa83, type: 2}
   - {fileID: 11400000, guid: 03ccf4f32455c2942b765180dedbf14a, type: 2}
+  - {fileID: 11400000, guid: 8fffe7587a11ec14bb570f3351007d8f, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -770,3 +815,4 @@ SceneRoots:
   - {fileID: 979166433}
   - {fileID: 547277287}
   - {fileID: 1749283008}
+  - {fileID: 653375638}
